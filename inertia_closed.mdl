@@ -5,7 +5,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,8 +53,8 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Administrator"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Dec 14 15:57:22 2016"
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Wed Apr 12 20:45:04 2017"
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
   Profile		  off
@@ -101,7 +101,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.0.4"
 	  StartTime		  "0.0"
-	  StopTime		  "20.0"
+	  StopTime		  "10.0"
 	  AbsTol		  "auto"
 	  FixedStep		  "0.01"
 	  InitialStep		  "auto"
@@ -507,7 +507,7 @@ Model {
       Ports		      [1]
       Position		      [385, 99, 415, 131]
       NamePlacement	      "alternate"
-      Location		      [270, 365, 594, 604]
+      Location		      [1, 47, 1921, 1039]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -535,7 +535,7 @@ Model {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn"
       Position		      [260, 97, 320, 133]
-      Denominator	      "[0.1 1]"
+      Denominator	      "[1 1]"
     }
     Line {
       SrcBlock		      "Transfer Fcn"
