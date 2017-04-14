@@ -1,5 +1,5 @@
 Model {
-  Name			  "complex_closed"
+  Name			  "paper1_inner_loop1"
   Version		  6.0
   GraphicalInterface {
     NumRootInports	    0
@@ -48,12 +48,12 @@ Model {
   StatusBar		  on
   BrowserShowLibraryLinks off
   BrowserLookUnderMasks	  off
-  Created		  "Thu Apr 13 09:38:18 2017"
+  Created		  "Fri Apr 14 09:06:19 2017"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Administrator"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Apr 14 09:34:21 2017"
+  LastModifiedDate	  "Fri Apr 14 09:23:45 2017"
   ModelVersionFormat	  "1.%<AutoIncrement:2>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
@@ -103,7 +103,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.01"
+	  FixedStep		  "auto"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -113,7 +113,7 @@ Model {
 	  MinStep		  "auto"
 	  RelTol		  "1e-3"
 	  SolverMode		  "Auto"
-	  Solver		  "ode3"
+	  Solver		  "ode45"
 	  ZeroCrossControl	  "UseLocalSettings"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -418,16 +418,6 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      OutDataTypeMode	      "Inherit from 'Constant value'"
-      OutDataType	      "sfix(16)"
-      ConRadixGroup	      "Use specified scaling"
-      OutScaling	      "2^0"
-      SampleTime	      "inf"
-    }
-    Block {
       BlockType		      Scope
       Floating		      off
       ModelBased	      off
@@ -444,6 +434,15 @@ Model {
       Decimation	      "1"
       SampleInput	      off
       SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Step
+      Time		      "1"
+      Before		      "0"
+      After		      "1"
+      SampleTime	      "-1"
+      VectorParams1D	      on
+      ZeroCross		      on
     }
     Block {
       BlockType		      Sum
@@ -484,8 +483,8 @@ Model {
     FontAngle		    "normal"
   }
   System {
-    Name		    "complex_closed"
-    Location		    [673, 301, 1253, 583]
+    Name		    "paper1_inner_loop1"
+    Location		    [674, 239, 1254, 521]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -497,31 +496,30 @@ Model {
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
     Block {
-      BlockType		      Constant
-      Name		      "Constant"
-      Position		      [65, 85, 95, 115]
-    }
-    Block {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
-      Position		      [345, 84, 375, 116]
-      Location		      [1, 47, 1367, 727]
+      Position		      [290, 14, 320, 46]
+      Location		      [188, 390, 512, 629]
       Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      SaveToWorkspace	      on
-      SaveName		      "out"
-      DataFormat	      "Array"
+      DataFormat	      "StructureWithTime"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "Step"
+      Position		      [15, 15, 45, 45]
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Sum
-      Name		      "Sum"
+      Name		      "Sum1"
       Ports		      [2, 1]
-      Position		      [140, 90, 160, 110]
+      Position		      [95, 20, 115, 40]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+-"
@@ -531,49 +529,49 @@ Model {
     }
     Block {
       BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      Position		      [210, 142, 270, 178]
-      Orientation	      "left"
-      Numerator		      "[2 0]"
-      Denominator	      "[3 1]"
+      Name		      "Transfer Fcn1"
+      Position		      [180, 12, 240, 48]
+      Denominator	      "[0.05 0]"
     }
     Block {
       BlockType		      TransferFcn
-      Name		      "Transfer Fcn1"
-      Position		      [210, 82, 270, 118]
-      Denominator	      "[0.05 0]"
+      Name		      "Transfer Fcn2"
+      Position		      [175, 87, 235, 123]
+      Orientation	      "left"
+      Numerator		      "[2.688 0]"
+      Denominator	      "[3.36 1]"
     }
     Line {
       SrcBlock		      "Transfer Fcn1"
       SrcPort		      1
-      Points		      [15, 0]
+      Points		      [0, 0; 15, 0]
       Branch {
 	DstBlock		"Scope"
 	DstPort			1
       }
       Branch {
-	Points			[0, 60]
-	DstBlock		"Transfer Fcn"
+	Points			[0, 75]
+	DstBlock		"Transfer Fcn2"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum"
+      SrcBlock		      "Sum1"
       SrcPort		      1
       DstBlock		      "Transfer Fcn1"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Transfer Fcn"
+      SrcBlock		      "Step"
       SrcPort		      1
-      Points		      [-55, 0]
-      DstBlock		      "Sum"
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Transfer Fcn2"
+      SrcPort		      1
+      Points		      [-65, 0]
+      DstBlock		      "Sum1"
       DstPort		      2
     }
   }
