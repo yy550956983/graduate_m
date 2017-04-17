@@ -1,11 +1,11 @@
 Model {
-  Name			  "paper1"
+  Name			  "homopoly1"
   Version		  6.0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6"
+    ComputedModelVersion    "1.1"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -48,13 +48,13 @@ Model {
   StatusBar		  on
   BrowserShowLibraryLinks off
   BrowserLookUnderMasks	  off
-  Created		  "Thu Apr 13 15:45:29 2017"
+  Created		  "Mon Apr 17 15:49:20 2017"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Administrator"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 18 00:29:02 2017"
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  LastModifiedDate	  "Mon Apr 17 16:01:49 2017"
+  ModelVersionFormat	  "1.%<AutoIncrement:1>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
   Profile		  off
@@ -101,7 +101,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.0.4"
 	  StartTime		  "0.0"
-	  StopTime		  "30.0"
+	  StopTime		  "10.0"
 	  AbsTol		  "auto"
 	  FixedStep		  "0.01"
 	  InitialStep		  "auto"
@@ -418,22 +418,6 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Gain
-      Gain		      "1"
-      Multiplication	      "Element-wise(K.*u)"
-      ParameterDataTypeMode   "Same as input"
-      ParameterDataType	      "sfix(16)"
-      ParameterScalingMode    "Best Precision: Matrix-wise"
-      ParameterScaling	      "2^0"
-      OutDataTypeMode	      "Same as input"
-      OutDataType	      "sfix(16)"
-      OutScaling	      "2^0"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Scope
       Floating		      off
       ModelBased	      off
@@ -461,19 +445,6 @@ Model {
       ZeroCross		      on
     }
     Block {
-      BlockType		      Sum
-      IconShape		      "rectangular"
-      Inputs		      "++"
-      InputSameDT	      on
-      OutDataTypeMode	      "Same as first input"
-      OutDataType	      "sfix(16)"
-      OutScaling	      "2^0"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      TransferFcn
       Numerator		      "[1]"
       Denominator	      "[1 2 1]"
@@ -499,8 +470,8 @@ Model {
     FontAngle		    "normal"
   }
   System {
-    Name		    "paper1"
-    Location		    [672, 180, 1568, 723]
+    Name		    "homopoly1"
+    Location		    [866, 317, 1446, 613]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -512,30 +483,11 @@ Model {
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
     Block {
-      BlockType		      Gain
-      Name		      "Gain"
-      Position		      [350, 335, 380, 365]
-      Orientation	      "left"
-      Gain		      "bp"
-      ParameterDataTypeMode   "Inherit via internal rule"
-      OutDataTypeMode	      "Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "Gain1"
-      Position		      [550, 185, 580, 215]
-      Gain		      "Ey"
-      ParameterDataTypeMode   "Inherit via internal rule"
-      OutDataTypeMode	      "Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
-      Position		      [800, 184, 830, 216]
-      Location		      [642, 327, 1252, 848]
+      Position		      [285, 114, 315, 146]
+      Location		      [1, 47, 1921, 1039]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -549,95 +501,18 @@ Model {
     Block {
       BlockType		      Step
       Name		      "Step"
-      Position		      [40, 185, 70, 215]
-      Time		      "0"
+      Position		      [110, 115, 140, 145]
       SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum"
-      Ports		      [2, 1]
-      Position		      [120, 190, 140, 210]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      Ports		      [2, 1]
-      Position		      [255, 190, 275, 210]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum2"
-      Ports		      [2, 1]
-      Position		      [270, 265, 290, 285]
-      Orientation	      "left"
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn"
-      Position		      [160, 182, 220, 218]
-      Numerator		      "[Tn 1]"
-      Denominator	      "[0.1*Tn 1]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn1"
-      Position		      [340, 182, 400, 218]
-      Denominator	      "[Ti 0]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn2"
-      Position		      [335, 257, 395, 293]
-      Orientation	      "left"
-      Numerator		      "[bt*Td 0]"
-      Denominator	      "[Td 1]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn3"
-      Position		      [445, 182, 505, 218]
-      Denominator	      "[Ty 1]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn4"
-      Position		      [605, 182, 665, 218]
-      Numerator		      "[-E*Tw 1]"
-      Denominator	      "[Eqh*Tw 1]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn5"
-      Position		      [700, 182, 760, 218]
-      Denominator	      "[Ta En]"
+      Position		      [175, 112, 235, 148]
+      Numerator		      "[1 0]"
+      Denominator	      "[1 1]"
     }
     Line {
       SrcBlock		      "Step"
-      SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum"
       SrcPort		      1
       DstBlock		      "Transfer Fcn"
       DstPort		      1
@@ -645,86 +520,8 @@ Model {
     Line {
       SrcBlock		      "Transfer Fcn"
       SrcPort		      1
-      DstBlock		      "Sum1"
+      DstBlock		      "Scope"
       DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn1"
-      SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	DstBlock		"Transfer Fcn3"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 75]
-	Branch {
-	  DstBlock		  "Transfer Fcn2"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, 75]
-	  DstBlock		  "Gain"
-	  DstPort		  1
-	}
-      }
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn3"
-      SrcPort		      1
-      DstBlock		      "Gain1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gain1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn4"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn4"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn5"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn5"
-      SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	DstBlock		"Scope"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 180; -650, 0]
-	DstBlock		"Sum"
-	DstPort			2
-      }
-    }
-    Line {
-      SrcBlock		      "Sum1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gain"
-      SrcPort		      1
-      Points		      [-65, 0]
-      DstBlock		      "Sum2"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn2"
-      SrcPort		      1
-      DstBlock		      "Sum2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      DstBlock		      "Sum1"
-      DstPort		      2
     }
   }
 }
